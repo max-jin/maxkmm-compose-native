@@ -17,6 +17,9 @@ composeActivity = "1.6.1"
 compose = "1.4.3"
 material = "1.9.0"
 
+# KMM
+orgJetbrainsKotlinxAtomicfu = "0.17.3"
+
 # Test
 junit = "4.13.2"
 androidxTestExtJunit = "1.1.5"
@@ -28,6 +31,8 @@ androidxCoreKtx = { group = "androidx.core", name = "core-ktx", version.ref = "a
 androidxAppcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppcompat" }
 # Androidx Jetpack Compose
 androidxActivityCompose = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
+# KMM
+orgJetbrainsKotlinxAtomicfu = { module = "org.jetbrains.kotlinx:atomicfu", version.ref = "orgJetbrainsKotlinxAtomicfu" }
 
 # Test
 junit = { group = "junit", name = "junit", version.ref = "junit" }

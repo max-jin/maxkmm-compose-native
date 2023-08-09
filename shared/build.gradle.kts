@@ -32,14 +32,20 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                // Compose
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material3)
+                implementation(compose.materialIconsExtended)
+                implementation(compose.ui)
+                // implementation(compose.uiTooling) need iOS support
+                implementation(compose.animation)
+                // implementation(compose.preview) need iOS support
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
                 // Issue: https://github.com/ctripcorp/SQLlin/issues/29
-                implementation("org.jetbrains.kotlinx:atomicfu:0.17.3")
+                implementation(libs.orgJetbrainsKotlinxAtomicfu)
             }
         }
         val androidMain by getting {

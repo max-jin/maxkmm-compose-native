@@ -18,7 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import getPlatformName
+import platformName
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
@@ -29,7 +29,7 @@ fun HomeScreen() {
     var showImage by remember { mutableStateOf(false) }
     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Button(onClick = {
-            greetingText = "Hello, ${getPlatformName()}"
+            greetingText = "Hello, $platformName"
             showImage = !showImage
         }) {
             Text(greetingText)

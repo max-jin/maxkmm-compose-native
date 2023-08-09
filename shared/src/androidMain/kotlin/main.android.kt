@@ -1,5 +1,11 @@
 import androidx.compose.runtime.Composable
+import core.common.Platform
 
-actual fun getPlatformName(): String = "Android"
+actual val platformName: String = "Android"
 
-@Composable fun MainView() = App()
+actual val platform: Platform = Platform.ANDROID
+
+@Composable
+fun MainAndroidView() = AndroidTheme {
+    CommonApp()
+}

@@ -1,23 +1,35 @@
+// Remove "DSL_SCOPE_VIOLATION" once KTIJ-19369 is fixed
+@file:Suppress("DSL_SCOPE_VIOLATION", "UNUSED_VARIABLE")
+
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    alias(libs.plugins.orgJetbrainsKotlinMultiplatform)
+    alias(libs.plugins.comAndroidApplication)
+    alias(libs.plugins.orgJetbrainsCompose)
+}
+
+kotlin {
+    androidTarget()
+    sourceSets {
+        val androidMain by getting {
+            dependencies {
+                implementation(project(":shared"))
+            }
+        }
+    }
 }
 
 android {
     namespace = "com.maxjin.kmmcomposenative.android"
-    compileSdk = 33
+
+    compileSdk = libs.versions.androidCompileSdk.get().toInt()
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
     defaultConfig {
         applicationId = "com.maxjin.kmmcomposenative.android"
-        minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.7"
+        minSdk = libs.versions.androidMinSdk.get().toInt()
+        targetSdk = libs.versions.androidTargetSdk.get().toInt()
+        versionCode = libs.versions.androidVersionCode.get().toInt()
+        versionName = libs.versions.androidVersionName.get()
     }
     packaging {
         resources {
@@ -30,20 +42,10 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
+    kotlin {
+        jvmToolchain(11)
     }
-}
-
-dependencies {
-    implementation(project(":shared"))
-    implementation("androidx.compose.ui:ui:1.4.3")
-    implementation("androidx.compose.ui:ui-tooling:1.4.3")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.4.3")
-    implementation("androidx.compose.foundation:foundation:1.4.3")
-    implementation("androidx.compose.material:material:1.4.3")
-    implementation("androidx.activity:activity-compose:1.7.1")
 }

@@ -1,24 +1,47 @@
 [versions]
+androidCompileSdk = "33"
+androidTargetSdk = "33"
+androidMinSdk = "24"
+androidVersionCode = "10000"
+androidVersionName = "1.0.0"
+
+kotlin = "1.9.0"
 agp = "8.1.0"
-org-jetbrains-kotlin-android = "1.8.0"
-core-ktx = "1.9.0"
-junit = "4.13.2"
-androidx-test-ext-junit = "1.1.5"
-espresso-core = "3.5.1"
-appcompat = "1.6.1"
+
+# Androidx
+androidxCoreKtx = "1.9.0"
+androidxAppcompat = "1.6.1"
+composeActivity = "1.6.1"
+
+# Compose
+compose = "1.4.3"
 material = "1.9.0"
 
+# Test
+junit = "4.13.2"
+androidxTestExtJunit = "1.1.5"
+androidxEspressoCore = "3.5.1"
+
 [libraries]
-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+# AndroidX
+androidxCoreKtx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCoreKtx" }
+androidxAppcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppcompat" }
+# Androidx Jetpack Compose
+androidxActivityCompose = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
+
+# Test
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidxTestExtJunit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxTestExtJunit" }
+androidxEspressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspressoCore" }
+# TODO material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
-com-android-application = { id = "com.android.application", version.ref = "agp" }
-org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
+comAndroidApplication = { id = "com.android.application", version.ref = "agp" }
+comAndroidLibrary = { id = "com.android.library", version.ref = "agp" }
+orgJetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+orgJetbrainsKotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+orgJetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+orgJetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose" }
 
 [bundles]
 

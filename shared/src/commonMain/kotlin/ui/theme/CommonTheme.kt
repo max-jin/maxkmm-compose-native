@@ -10,7 +10,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import com.maxjin.a11y.ui.theme.Typography
 
 private val darkColorScheme = darkColorScheme(
     primary = DarkPrimary,

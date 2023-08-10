@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
-import com.maxjin.a11y.ui.theme.Typography
+import ui.theme.Typography
 import ui.theme.DarkOnPrimary
 import ui.theme.DarkOnPrimaryContainer
 import ui.theme.DarkOnSecondary

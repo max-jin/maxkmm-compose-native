@@ -27,6 +27,8 @@ ktor = "2.3.2"
 comSquareupSqldelight = "1.5.5"
 # Kotlinx datetime
 orgJetbrainsKotlinxDatetime = "0.4.0"
+# Kamel
+mediaKamelImage = "0.7.0"
 
 # Test
 junit = "4.13.2"
@@ -59,6 +61,8 @@ comSquareupSqldelightAndroidDriver = { module = "com.squareup.sqldelight:android
 comSquareupSqldelightNativeDriver = { module = "com.squareup.sqldelight:native-driver", version.ref = "comSquareupSqldelight" }
 # Kotlinx datetime - shared
 orgJetbrainsKotlinxDatetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "orgJetbrainsKotlinxDatetime" }
+# kamel image loader
+mediaKamelImage = { module = "media.kamel:kamel-image", version.ref = "mediaKamelImage" }
 
 # Test
 junit = { group = "junit", name = "junit", version.ref = "junit" }

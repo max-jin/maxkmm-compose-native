@@ -48,6 +48,9 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
+                // kamel image loading
+                implementation(libs.mediaKamelImage)
+
                 // Issue: https://github.com/ctripcorp/SQLlin/issues/29
                 implementation(libs.orgJetbrainsKotlinxAtomicfu)
 

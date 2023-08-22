@@ -42,7 +42,7 @@ private val lightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun CommonTheme(
+fun SharedTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {

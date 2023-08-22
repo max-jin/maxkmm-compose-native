@@ -6,14 +6,14 @@
 import androidx.compose.runtime.Composable
 import core.common.Platform
 import ui.home.HomeScreen
-import ui.theme.CommonTheme
+import ui.theme.SharedTheme
 
 @Composable
 fun CommonApp() {
     if (platform == Platform.ANDROID) {
         HomeScreen()
     } else {
-        CommonTheme {
+        SharedTheme {
             HomeScreen()
         }
     }

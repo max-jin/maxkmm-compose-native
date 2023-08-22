@@ -19,6 +19,14 @@ material = "1.9.0"
 
 # KMM
 orgJetbrainsKotlinxAtomicfu = "0.17.3"
+# Coroutines
+kotlinxCoroutines = "1.7.1"
+# Ktor
+ktor = "2.3.2"
+# Sqldelight
+comSquareupSqldelight = "1.5.5"
+# Kotlinx datetime
+orgJetbrainsKotlinxDatetime = "0.4.0"
 
 # Test
 junit = "4.13.2"
@@ -26,13 +34,31 @@ androidxTestExtJunit = "1.1.5"
 androidxEspressoCore = "3.5.1"
 
 [libraries]
-# AndroidX
+# AndroidX - Android
 androidxCoreKtx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCoreKtx" }
 androidxAppcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppcompat" }
-# Androidx Jetpack Compose
+# Androidx Jetpack Compose - Android
 androidxActivityCompose = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
-# KMM
+# KMM - shared
 orgJetbrainsKotlinxAtomicfu = { module = "org.jetbrains.kotlinx:atomicfu", version.ref = "orgJetbrainsKotlinxAtomicfu" }
+# Coroutines - shared
+kotlinxCoroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+# Ktor - shared
+ktorClientCore = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktorClientContentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktorSerializationKotlinxJson = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+# Ktor - Android
+ktorClientAndroid = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+# Ktor - iOS
+ktorClientDarwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+# Sqldelight - shared
+comSquareupSqldelightRuntime = { module = "com.squareup.sqldelight:runtime", version.ref = "comSquareupSqldelight" }
+# Sqldelight - Android
+comSquareupSqldelightAndroidDriver = { module = "com.squareup.sqldelight:android-driver", version.ref = "comSquareupSqldelight" }
+# Sqldelight - iOS
+comSquareupSqldelightNativeDriver = { module = "com.squareup.sqldelight:native-driver", version.ref = "comSquareupSqldelight" }
+# Kotlinx datetime - shared
+orgJetbrainsKotlinxDatetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "orgJetbrainsKotlinxDatetime" }
 
 # Test
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -47,6 +73,7 @@ orgJetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref =
 orgJetbrainsKotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 orgJetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 orgJetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose" }
+comSquareupSqldelight = { id = "com.squareup.sqldelight", version.ref = "comSquareupSqldelight" }
 
 [bundles]
 

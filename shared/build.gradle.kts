@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.comAndroidLibrary)
     alias(libs.plugins.orgJetbrainsCompose)
     kotlin("native.cocoapods")
+    alias(libs.plugins.comSquareupSqldelight)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -46,13 +47,29 @@ kotlin {
 
                 // Issue: https://github.com/ctripcorp/SQLlin/issues/29
                 implementation(libs.orgJetbrainsKotlinxAtomicfu)
+
+                // Kotlinx Coroutines
+                implementation(libs.kotlinxCoroutinesCore)
+                // Ktor (needs Kotlinx Serialization)
+                implementation(libs.ktorClientCore)
+                implementation(libs.ktorClientContentNegotiation)
+                implementation(libs.ktorSerializationKotlinxJson)
+                // SQLDelight
+                implementation(libs.comSquareupSqldelightRuntime)
+                // Kotlinx Date&time
+                implementation(libs.orgJetbrainsKotlinxDatetime)
             }
         }
         val androidMain by getting {
             dependencies {
+                // Androidx
                 api(libs.androidxCoreKtx)
                 api(libs.androidxAppcompat)
                 api(libs.androidxActivityCompose)
+                // SQLDelight
+                implementation(libs.comSquareupSqldelightAndroidDriver)
+                // Ktor
+                implementation(libs.ktorClientAndroid)
             }
         }
 
@@ -64,6 +81,13 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+
+            dependencies {
+                // SQLDelight
+                implementation(libs.comSquareupSqldelightNativeDriver)
+                // Ktor
+                implementation(libs.ktorClientDarwin)
+            }
         }
 
         val commonTest by getting {

@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.orgJetbrainsKotlinMultiplatform).apply(false)
     alias(libs.plugins.orgJetbrainsKotlinJvm).apply(false)
     alias(libs.plugins.orgJetbrainsCompose).apply(false)
+    alias(libs.plugins.comSquareupSqldelight).apply(false)
 }
 
 tasks.register("clean", Delete::class) {

@@ -4,9 +4,9 @@
 plugins {
     alias(libs.plugins.orgJetbrainsKotlinMultiplatform)
     alias(libs.plugins.comAndroidLibrary)
+    alias(libs.plugins.orgJetbrainsKotlinSerialization)
     alias(libs.plugins.orgJetbrainsCompose)
     kotlin("native.cocoapods")
-    alias(libs.plugins.comSquareupSqldelight)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -31,6 +31,9 @@ kotlin {
     }
 
     sourceSets {
+        /**
+         * Shared multiplatform dependencies here
+         */
         val commonMain by getting {
             dependencies {
                 // Compose
@@ -60,6 +63,11 @@ kotlin {
                 implementation(libs.orgJetbrainsKotlinxDatetime)
             }
         }
+
+        /**
+         * For platform Android main source
+         * Notes: Both the SQLDelight and Ktor libraries need platform drivers in the iOS and Android source sets, as well.
+         */
         val androidMain by getting {
             dependencies {
                 // Androidx
@@ -76,6 +84,11 @@ kotlin {
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
+
+        /**
+         * For platform iOS main source
+         * Notes: Both the SQLDelight and Ktor libraries need platform drivers in the iOS and Android source sets, as well.
+         */
         val iosMain by creating {
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)

@@ -1,3 +1,8 @@
+/*
+ * 2023 - Developed by Max Jin
+ * Source code subject to change. Refer to NOTICE.txt in source tree for changes and attributions.
+ */
+
 import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

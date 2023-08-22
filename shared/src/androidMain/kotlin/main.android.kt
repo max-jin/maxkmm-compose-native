@@ -1,11 +1,13 @@
+/*
+ * 2023 - Developed by Max Jin
+ * Source code subject to change. Refer to NOTICE.txt in source tree for changes and attributions.
+ */
+
+import android.content.Context
 import androidx.compose.runtime.Composable
-import core.common.Platform
-
-actual val platformName: String = "Android"
-
-actual val platform: Platform = Platform.ANDROID
+import kmm.platform.Platform
 
 @Composable
-fun MainAndroidView() = AndroidTheme {
-    CommonApp()
+fun MainAndroidView(context: Context) = AndroidTheme {
+    SharedApp(Platform(context))
 }

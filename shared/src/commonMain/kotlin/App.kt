@@ -4,17 +4,18 @@
  */
 
 import androidx.compose.runtime.Composable
-import core.common.Platform
+import core.common.PlatformOS
+import kmm.platform.Platform
 import ui.home.HomeScreen
 import ui.theme.SharedTheme
 
 @Composable
-fun CommonApp() {
-    if (platform == Platform.ANDROID) {
-        HomeScreen()
+fun SharedApp(platform: Platform) {
+    if (platform.os == PlatformOS.ANDROID) {
+        HomeScreen(platform)
     } else {
         SharedTheme {
-            HomeScreen()
+            HomeScreen(platform)
         }
     }
 }

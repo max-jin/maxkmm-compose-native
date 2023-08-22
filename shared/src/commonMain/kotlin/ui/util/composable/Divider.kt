@@ -3,6 +3,8 @@
  * Source code subject to change. Refer to NOTICE.txt in source tree for changes and attributions.
  */
 
+@file:Suppress("unused")
+
 package ui.util.composable
 
 import androidx.compose.foundation.background

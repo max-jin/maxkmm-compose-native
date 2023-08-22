@@ -72,6 +72,7 @@ comAndroidLibrary = { id = "com.android.library", version.ref = "agp" }
 orgJetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 orgJetbrainsKotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 orgJetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+orgJetbrainsKotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 orgJetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose" }
 comSquareupSqldelight = { id = "com.squareup.sqldelight", version.ref = "comSquareupSqldelight" }
 

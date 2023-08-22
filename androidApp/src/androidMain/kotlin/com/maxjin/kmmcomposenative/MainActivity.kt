@@ -1,3 +1,8 @@
+/*
+ * 2023 - Developed by Max Jin
+ * Source code subject to change. Refer to NOTICE.txt in source tree for changes and attributions.
+ */
+
 package com.maxjin.kmmcomposenative
 
 import MainAndroidView
@@ -9,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MainAndroidView()
+            MainAndroidView(this.applicationContext)
         }
     }
 }

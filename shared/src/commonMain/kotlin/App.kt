@@ -26,7 +26,7 @@ fun SharedApp(platform: Platform) {
         PlatformOS.IOS -> {
             SharedTheme {
                 Surface(
-                    modifier = Modifier.fillMaxSize().background(color = MaterialTheme.colorScheme.background).padding(top = 46.dp, bottom = 20.dp)
+                    modifier = Modifier.fillMaxSize().background(color = MaterialTheme.colorScheme.background)
                 ) {
                     HomeScreen(platform)
                 }

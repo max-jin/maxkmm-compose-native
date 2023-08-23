@@ -10,6 +10,7 @@ import androidx.compose.animation.core.snap
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,12 +26,13 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -41,11 +43,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import core.common.PlatformOS
 import core.spacex.RocketLaunch
 import data.spacex.SpacexRepositoryImpl
 import io.kamel.image.KamelImage
@@ -53,13 +59,16 @@ import io.kamel.image.asyncPainterResource
 import io.ktor.http.Url
 import kmm.platform.Platform
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.painterResource
 import ui.util.dimenB2
 import ui.util.dimenB4
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalResourceApi::class)
 @Composable
 fun HomeScreen(platform: Platform) {
     val spacexRepository = SpacexRepositoryImpl()
+    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     var spacexLaunches: List<RocketLaunch> by remember { mutableStateOf(emptyList()) }
     val scope = rememberCoroutineScope()
     LaunchedEffect(true) {
@@ -70,8 +79,20 @@ fun HomeScreen(platform: Platform) {
         }
     }
     Scaffold(
+        containerColor = Color.Transparent,
+        modifier = Modifier
+            .paint(painter = painterResource("spacex6.png"), contentScale = ContentScale.Fit, alignment = Alignment.TopCenter, sizeToIntrinsics = true)
+            .nestedScroll(scrollBehavior.nestedScrollConnection)
+            .then(
+                if (platform.os == PlatformOS.IOS) {
+                    Modifier.padding(top = 46.dp, bottom = 20.dp)
+                } else {
+                    Modifier
+                }
+            ),
         topBar = {
-            TopAppBar(
+            LargeTopAppBar(
+                scrollBehavior = scrollBehavior,
                 title = {
                     Text(
                         "SpaceX Launches",
@@ -95,14 +116,27 @@ fun HomeScreen(platform: Platform) {
                             contentDescription = "Reload"
                         )
                     }
-                }
+                },
+                colors = TopAppBarDefaults.largeTopAppBarColors(
+                    containerColor = Color.Transparent,
+                    titleContentColor = Color.White,
+                    actionIconContentColor = Color.White
+                )
             )
         }
     ) { paddingValues ->
-        SpacexLaunchListView(modifier = Modifier.padding(paddingValues), spacexLaunches)
-        if (spacexLaunches.isEmpty()) {
-            Box(modifier = Modifier.fillMaxSize()) {
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+        Box(
+            Modifier
+                .padding(paddingValues)
+                .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
+                .fillMaxSize()
+                .background(color = MaterialTheme.colorScheme.background)
+        ) {
+            SpacexLaunchListView(modifier = Modifier.padding(top = 8.dp), spacexLaunches)
+            if (spacexLaunches.isEmpty()) {
+                Box(modifier = Modifier.fillMaxSize()) {
+                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                }
             }
         }
     }
@@ -130,7 +164,7 @@ fun SpacexLaunchListView(modifier: Modifier = Modifier, spacexLaunches: List<Roc
                             }
                             KamelImage(modifier = Modifier.size(60.dp), resource = asyncPainterResource, contentDescription = null,
                                 onLoading = { progress -> CircularProgressIndicator(progress) },
-                                onFailure = { exception ->
+                                onFailure = { _ ->
                                     // TODO onFailure
                                 })
                         }

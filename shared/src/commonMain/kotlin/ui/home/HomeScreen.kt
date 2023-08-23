@@ -81,7 +81,7 @@ fun HomeScreen(platform: Platform) {
     Scaffold(
         containerColor = Color.Transparent,
         modifier = Modifier
-            .paint(painter = painterResource("spacex6.png"), contentScale = ContentScale.Fit, alignment = Alignment.TopCenter, sizeToIntrinsics = true)
+            .paint(painter = painterResource("spacex6.png"), contentScale = ContentScale.FillWidth, alignment = Alignment.TopCenter, sizeToIntrinsics = true)
             .nestedScroll(scrollBehavior.nestedScrollConnection)
             .then(
                 if (platform.os == PlatformOS.IOS) {
@@ -128,7 +128,7 @@ fun HomeScreen(platform: Platform) {
         Box(
             Modifier
                 .padding(paddingValues)
-                .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
+                .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
                 .fillMaxSize()
                 .background(color = MaterialTheme.colorScheme.background)
         ) {
